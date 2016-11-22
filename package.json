@@ -1,0 +1,8 @@
+{
+  "name": "customize_table",
+  "version": "0.0.1",
+  "devDependencies":{
+  	"lodash":"4.16.6",
+  	"select2":"4.0.3"
+  }
+}

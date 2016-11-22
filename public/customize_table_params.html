@@ -1,0 +1,64 @@
+<ul class="opt-row">
+  <li>
+    <input type="checkbox" class="accordion" checked>
+    <i></i>
+    <h4>Per Page</h4>
+    <div class="opt-group">
+      <input type="number" ng-model="vis.params.perPage" class="form-control ng-valid ng-dirty ng-valid-number ng-touched">
+    </div>
+  </li>
+
+  <li>
+    <input type="checkbox" class="accordion" checked>
+    <i></i>
+    <h4>Link to another field</h4>
+    <div class="opt-group">
+      <div class="form-group" ng-repeat="obj in vis.params.configLine.linkField">
+        <label class="control-label">From :</label>
+        <span ng-click="removeLinkField($index)" tooltip="Remove LinkField" tooltip-append-to-body="true" class="glyphicon glyphicon-remove-circle" style="float: right;font-size: 14px;"></span>
+        <select class="form-control" ng-model="obj.from" style="width: 100%;">
+          <option ng-repeat="option in $root.editor.fields" ng-value="option">{{option}}</option>
+        </select>
+
+        <label class="control-label">To :</label>
+        <select class="form-control" ng-model="obj.to" style="width: 100%;">
+          <option ng-repeat="option in $root.editor.fields" ng-value="option">{{option}}</option>
+        </select>
+      </div>
+      <span ng-disabled="disable" class="btn btn-xs btn-success" ng-click="addLink()">
+        <span>Add link</span>
+      </span>
+    </div>
+  </li>
+
+  <li>
+    <input type="checkbox" class="accordion" checked>
+    <i></i>
+    <h4>Hide fields</h4>
+    <div class="opt-group">
+      <div class="form-group">
+        <label class="control-label">Hide metric fields:</label>
+        <multi-select id="multiSelectMetricField" model="$root.editor.metricField" init="vis.params.configLine.ignoreMetricFields" 
+        label="Select metric fields that you want to hide"></multi-select>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Hide bucket fields:</label>
+        <multi-select id="multiSelectBucketField" model="$root.editor.fields" init="vis.params.configLine.ignoreBucketFields" 
+        label="Select bucket fields that you want to hide"></multi-select>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <input type="checkbox" class="accordion" checked>
+      <i></i>
+      <h4>Enable SearchBox</h4>
+      <div class="opt-group">
+        <label>
+          <input type="checkbox" ng-model="vis.params.enableSearchBox" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+          Enable search box
+        </label>
+      </div>
+    </input>
+  </li>
+</ul>
